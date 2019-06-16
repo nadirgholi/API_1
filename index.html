@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            
+
+        <title>Fetch JSON from ISS's API and map Lat Lon</title>
+
+        
+
+
+
+    </head>
+    <body>
+        <h2>International Satellite Station</h2>
+
+        <p>
+            Latitude: <span id="lat"></span><br />
+            Longitude: <span id="lon"></span>
+        </p>
+       
+
+
+        <script>
+            
+
+            const api_url = 'https://api.wheretheiss.at/v1/satellites/25544'
+            async function getISS() {
+                const response = await fetch(api_url);
+                const data = await response.json();
+                const { timestamp, latitude, longitude, velocity} = data;
+                console.log(data);
+                
+                //document.getElementById('vel').textContent = velocity;
+                document.getElementById('lat').textContent = latitude;
+                document.getElementById('lon').textContent = longitude;
+                //document.getElementById('TS').textContent = timestamp;
+            }
+            getISS();
+         
+        
+        </script>
+    </body>
+</html>
