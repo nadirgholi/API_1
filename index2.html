@@ -27,7 +27,8 @@
 
         <p>
             Latitude: <span id="lat"></span><br />
-            Longitude: <span id="lon"></span>
+            Longitude: <span id="lon"></span><br />
+            Date, Time: <span id="time"></span>
         </p>
         <div id="issMap"></div>
 
@@ -54,10 +55,14 @@
                 const { timestamp, latitude, longitude, velocity} = data;
                 console.log(data);
                 
+                today = new Date();
+                TimeStamp = today.toLocaleString('en-US', {timeZone: 'America/Chicago'});
+                
                 //document.getElementById('vel').textContent = velocity;
                 document.getElementById('lat').textContent = latitude;
                 document.getElementById('lon').textContent = longitude;
                 //document.getElementById('TS').textContent = timestamp;
+                document.getElementById('time').textContent = TimeStamp;
 
                 //L.marker([latitude, longitude]).addTo(mymap);
                 marker.setLatLng([latitude, longitude]);
